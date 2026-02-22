@@ -1,3 +1,7 @@
+# DISCORD : isopa.x
+
+# This software is provided for educational purposes only. The developer is not responsible for any misuse or illegal activities.
+
 import discord
 import os
 from discord.ext import commands
@@ -259,3 +263,4 @@ async def removegive(ctx):
 
 token = "BOT_TOKEN"
 bot.run(token)
+
