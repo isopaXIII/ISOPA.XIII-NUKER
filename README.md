@@ -10,7 +10,6 @@ if it's good run : pip install -r requirements.txt
 
 for launch the bot use : https://replit.com/ and create a new application or use this https://replit.com/import/github
 
-<img width="755" height="805" alt="image" src="https://github.com/user-attachments/assets/28af878a-543a-4e67-ad36-36f90e0129e7" />
 <img width="1380" height="951" alt="image" src="https://github.com/user-attachments/assets/6e7b6d53-b51b-464d-8412-0b03f34fff7d" />
 
 create an app on Discord dev portal : https://discord.com/developers/applications create a bot 
