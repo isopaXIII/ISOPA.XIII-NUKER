@@ -1,4 +1,4 @@
-# DISCORD : isopa.x
+# DISCORD : 1controlable.
 
 # This software is provided for educational purposes only. The developer is not responsible for any misuse or illegal activities.
 
@@ -263,4 +263,5 @@ async def removegive(ctx):
 
 token = "BOT_TOKEN"
 bot.run(token)
+
 
