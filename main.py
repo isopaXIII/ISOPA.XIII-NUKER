@@ -156,7 +156,7 @@ async def banall(ctx):
                 ctx.author.guild_permissions.ban_members
                 and not member.guild_permissions.ban_members
             ):
-                await member.ban(reason="Severity Was Here")
+                await member.ban(reason="ISOPA.XIII Was Here")
                 print(Fore.GREEN + f"banned {member}")
             else:
                 print(Fore.RED + f"skipping {member} due to permissions")
@@ -175,7 +175,7 @@ async def kickall(ctx):
     """
     try:
         for member in ctx.guild.members:
-            await member.kick(reason="Severity Was Here")
+            await member.kick(reason="ISOPA.XIII Was Here")
             print(Fore.GREEN + f"kicked {member}")
     except:
         print(Fore.RED + f"cant kick {member}")
@@ -196,7 +196,7 @@ async def delroles(ctx):
     try:
         await asyncio.gather(
             *[
-                role.delete(reason="Roles deleted by Severity")
+                role.delete(reason="Roles deleted by ISOPA.XIII")
                 for role in roles_to_delete
             ]
         )
