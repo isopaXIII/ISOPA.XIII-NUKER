@@ -1,4 +1,4 @@
-# DISCORD : 1controlable.
+# DISCORD : kz3v.
 
 # This software is provided for educational purposes only. The developer is not responsible for any misuse or illegal activities.
 
